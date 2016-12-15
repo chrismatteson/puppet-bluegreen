@@ -12,12 +12,22 @@ application bluegreen (
 ) {
   $awsproxy_components = collect_component_titles($nodes, Bluegreen::Nodes)
   if (size($awsproxy_components) != 1) {
-    $awxproxy_size = size($db_components)
+    $awxproxy_size = size($awsproxy_components)
     fail("There must be one aws proxy node component for bluegreen. found: ${awsproxy_size}")
   }
   bluegreen::nodes { $awsproxy_components[0]:
     awsnodes => $awsnodes,
-    export   => Dependency["wdp-${name}"],
+    export   => Nodes["wdp-${name}"],
+  }
+
+  $verify_components = collect_component_titles($nodes, Bluegreen::Verify)
+  if (size($verify_components) != 1) {
+    $verify_size = size($verify_components)
+    fail("There must be one aws verification node component for bluegreen. found: ${verify_size}")
+  }
+  bluegreen::verify { $verify_components[0]:
+    consume => Nodes["wdp-${name}"],
+    export  => Dependency["wdp-${name}"],
   }
 
   $db_components = collect_component_titles($nodes, Bluegreen::Database)

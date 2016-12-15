@@ -37,8 +37,6 @@ define bluegreen::lb (
     action => accept,
   }
 }
-Bluegreen::Lb consumes Dependency {
-}
 Bluegreen::Lb produces Http {
   host => $::fqdn,
   ip   => $::ipaddress,
