@@ -9,7 +9,7 @@ application bluegreen (
   String $lb_balance_mode = 'roundrobin',
   Array  $lb_options      = ['forwardfor','http-server-close','httplog'],
   Array  $awsnodes           = '',
-){
+) {
   $awsproxy_components = collect_component_titles($nodes, Bluegreen::Nodes)
   if (size($awsproxy_components) != 1) {
     $awxproxy_size = size($db_components)
