@@ -1,10 +1,10 @@
-define wordpress_app::database(
+define bluegreen::database(
   String $database = 'wordpress',
   String $user     = 'wordpress',
   String $password = 'wordpress',
   String $version  = '1',
 ){
-  include wordpress_app::database_profile
+  include bluegreen::database_profile
   $user_host = "${user}@%"
 
   mysql_database { $database:
@@ -38,7 +38,9 @@ define wordpress_app::database(
   }
 
 }
-Wordpress_app::Database produces Database {
+Bluegreen::Database consumes Dependancy {
+}
+Bluegreen::Database produces Database {
   host     => $::fqdn,
   port     => '3306',
   provider => 'tcp',

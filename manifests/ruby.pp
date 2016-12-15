@@ -1,4 +1,4 @@
-class wordpress_app::ruby (
+class bluegreen::ruby (
   $manage = true,
 ) {
   if $manage {

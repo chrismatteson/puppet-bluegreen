@@ -1,4 +1,4 @@
-class wordpress_app::web_profile {
+class bluegreen::web_profile {
   class {'apache':
     default_vhost => false,
     mpm_module    => 'prefork',

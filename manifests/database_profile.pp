@@ -1,4 +1,4 @@
-class wordpress_app::database_profile (
+class bluegreen::database_profile (
   String $bind_address = '0.0.0.0',
 ) {
   class { 'mysql::server':

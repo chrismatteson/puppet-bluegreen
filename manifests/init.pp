@@ -1,4 +1,4 @@
-application wordpress_app (
+application bluegreen (
   String $database        = 'wordpress',
   String $db_user         = 'wordpress',
   String $db_pass         = 'wordpress',

@@ -1,5 +1,5 @@
 # See Readme
-define wordpress_app::web(
+define bluegreen::web(
   String $db_host,
   String $db_name,
   String $db_user,
@@ -7,7 +7,7 @@ define wordpress_app::web(
   String $apache_port = '8080',
   String $interface = '',
 ) {
-  include wordpress_app::web_profile
+  include bluegreen::web_profile
 
   $int =  $interface ? {
     /\S+/   => $::networking['interfaces'][$interface]['ip'],
@@ -42,13 +42,15 @@ define wordpress_app::web(
     action => accept,
   }
 }
-Wordpress_app::Web consumes Database{
+Bluegreen::Web consumes Dependancy{
+}
+Bluegreen::Web consumes Database{
   db_host     => $host,
   db_name     => $database,
   db_user     => $user,
   db_password => $password,
 }
-Wordpress_app::Web produces Http {
+Bluegreen::Web produces Http {
   ip   => $interface ? { /\S+/ => $::networking['interfaces'][$interface]['ip'], default => $::ipaddress },
   port => $apache_port,
   host => $::fqdn,

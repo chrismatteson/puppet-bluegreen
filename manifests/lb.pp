@@ -1,4 +1,4 @@
-define wordpress_app::lb (
+define bluegreen::lb (
   $balancermembers,
   Array $lb_options     = ['forwardfor', 'http-server-close', 'httplog'],
   String $ipaddress     = '0.0.0.0',
@@ -6,7 +6,7 @@ define wordpress_app::lb (
   String $port          = '80',
 ) {
   # needed for concat
-  include wordpress_app::ruby
+  include bluegreen::ruby
   include haproxy
   haproxy::listen {"wordpress-${name}":
     collect_exported => false,
@@ -37,7 +37,9 @@ define wordpress_app::lb (
     action => accept,
   }
 }
-Wordpress_app::Lb produces Http {
+Bluegreen::Lb consumes Dependancy {
+}
+Bluegreen::Lb produces Http {
   host => $::fqdn,
   ip   => $::ipaddress,
   port => $port,
