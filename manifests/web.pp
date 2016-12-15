@@ -42,8 +42,7 @@ define bluegreen::web(
     action => accept,
   }
 }
-Bluegreen::Web consumes Dependancy{
-}
+Bluegreen::Web consumes Dependency{}
 Bluegreen::Web consumes Database{
   db_host     => $host,
   db_name     => $database,

@@ -38,8 +38,7 @@ define bluegreen::database(
   }
 
 }
-Bluegreen::Database consumes Dependancy {
-}
+Bluegreen::Database consumes Dependency {}
 Bluegreen::Database produces Database {
   host     => $::fqdn,
   port     => '3306',

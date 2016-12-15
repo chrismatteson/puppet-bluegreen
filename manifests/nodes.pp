@@ -1,8 +1,8 @@
 # See Readme
-define wordpress_app::nodes(
-  Array $nodes,
+define bluegreen::nodes (
+  Array $awsnodes,
 ) {
-  bluegrean::ec2instance { $nodes:
+  bluegrean::ec2instance { $awsnodes:
     image_id           => 'ami-5ec1673e',
     pp_created_by      => $ec2_tags['created_by'],
     key_name           => 'chrismattesonaws',
@@ -10,5 +10,4 @@ define wordpress_app::nodes(
   }
 }
 
-Wordpress_app::Node produces Dependancy {
-}
+Bluegreen::Nodes produces Dependency {}

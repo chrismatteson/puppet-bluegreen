@@ -6,7 +6,7 @@ class bluegreen::web_profile {
 
   include apache::mod::prefork
   include apache::mod::php
-  include wordpress_app::ruby
+  include bluegreen::ruby
   include mysql::client
   include mysql::bindings
   include mysql::bindings::php
