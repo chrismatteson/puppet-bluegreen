@@ -15,14 +15,14 @@ define bluegreen::ec2instance (
 ) {
 
   $erbtemplate = $platform_name ? {
-    /(windows2012|windows2008)/ => 'awsenv/windows.erb',
-    default => 'awsenv/linux.erb',
+    /(windows2012|windows2008)/ => 'bluegreen/windows.erb',
+    default => 'bluegreen/linux.erb',
   }
 
   ec2_instance { $nodename:
     ensure            => 'running',
     availability_zone => $availability_zone,
-    image_id          => $image_ids[$ec2_region][$platform_name],
+    image_id          => $image_id,
     instance_type     => $instance_type,
     key_name          => $key_name,
     region            => $region,

@@ -2,7 +2,7 @@
 define bluegreen::nodes (
   Array $awsnodes,
 ) {
-  bluegrean::ec2instance { $awsnodes:
+  bluegreen::ec2instance { $awsnodes:
     image_id           => 'ami-5ec1673e',
     pp_created_by      => $ec2_tags['created_by'],
     key_name           => 'chrismattesonaws',
