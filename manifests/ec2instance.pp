@@ -7,7 +7,7 @@ define bluegreen::ec2instance (
   $security_groups = $bluegreen::params::security_groups,
   $subnet = $bluegreen::params::subnet,
   $pe_version_string = $::pe_version,
-  $pp_project = 'TrainingLab',
+  $pp_project = 'Bluegreen',
   $pp_created_by,
   $pp_department = 'TSE',
   $key_name,
