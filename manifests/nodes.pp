@@ -13,5 +13,4 @@ define bluegreen::nodes(
 }
 Bluegreen::Nodes produces Nodes {
   nodes   => "$awsnodes",
-  timeout => 1,
 }
