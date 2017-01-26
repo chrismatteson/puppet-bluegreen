@@ -1,5 +1,4 @@
-# See Readme
-define bluegreen::nodes (
+define bluegreen::nodes(
   Array $awsnodes,
 ) {
   $public_key = split($ec2_metadata['public-keys']['0']['openssh-key'], ' ')
@@ -12,5 +11,7 @@ define bluegreen::nodes (
     pe_master_hostname => $ec2_metadata['local-hostname'],
   }
 }
-
-Bluegreen::Nodes produces Nodes {}
+Bluegreen::Nodes produces Nodes {
+  nodes   => "$awsnodes",
+  timeout => 1,
+}

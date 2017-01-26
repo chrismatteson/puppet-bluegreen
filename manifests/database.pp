@@ -43,4 +43,7 @@ Bluegreen::Database produces Database {
   host     => $::fqdn,
   port     => '3306',
   provider => 'tcp',
+  user     => $user,
+  password => $password,
+  database => $database,
 }

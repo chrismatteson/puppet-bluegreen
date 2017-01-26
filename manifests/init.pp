@@ -8,7 +8,7 @@ application bluegreen (
   String $lb_port         = '80',
   String $lb_balance_mode = 'roundrobin',
   Array  $lb_options      = ['forwardfor','http-server-close','httplog'],
-  Array  $awsnodes           = '',
+  Array  $awsnodes,
 ) {
   $awsproxy_components = collect_component_titles($nodes, Bluegreen::Nodes)
   if (size($awsproxy_components) != 1) {
@@ -26,8 +26,9 @@ application bluegreen (
     fail("There must be one aws verification node component for bluegreen. found: ${verify_size}")
   }
   bluegreen::verify { $verify_components[0]:
-    consume => Nodes["wdp-${name}"],
-    export  => Dependency["wdp-${name}"],
+    nodes    => $awsnodes,
+    consume  => Nodes["wdp-${name}"],
+    export   => Dependency["wdp-${name}"],
   }
 
   $db_components = collect_component_titles($nodes, Bluegreen::Database)
