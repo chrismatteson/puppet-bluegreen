@@ -2,7 +2,6 @@ define bluegreen::database(
   String $database = 'wordpress',
   String $user     = 'wordpress',
   String $password = 'wordpress',
-  String $version  = '1',
 ){
   include bluegreen::database_profile
   $user_host = "${user}@%"
@@ -43,7 +42,4 @@ Bluegreen::Database produces Database {
   host     => $::fqdn,
   port     => '3306',
   provider => 'tcp',
-  user     => $user,
-  password => $password,
-  database => $database,
 }
